@@ -292,24 +292,20 @@ export function WeddingPageContent() {
                 <div>
                   <span className="party-card-kicker">With gratitude</span>
                   <h3 id="sponsors-title">Principal Sponsors</h3>
-                  <p className="party-card-subtitle">Our ninong and ninang</p>
                 </div>
                 <span className="party-card-count">
-                  {wedding.weddingParty.principalSponsors.length} couples
                 </span>
               </div>
               <ul className="sponsor-list">
                 {wedding.weddingParty.principalSponsors.map((sponsor, index) => (
                   <li key={`${sponsor.ninong}-${sponsor.ninang}-${index}`}>
                     <div>
-                      <span>Ninong</span>
                       <strong>{sponsor.ninong}</strong>
                     </div>
                     <span className="sponsor-ampersand" aria-hidden="true">
                       &amp;
                     </span>
                     <div>
-                      <span>Ninang</span>
                       <strong>{sponsor.ninang}</strong>
                     </div>
                   </li>

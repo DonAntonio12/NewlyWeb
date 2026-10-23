@@ -4,7 +4,7 @@ export const wedding = {
     bride: "Danielle Kayle Antonio",
     initials: "K & D",
   },
-  demoGuestName: "Juan Dela Cruz",
+  demoGuestName: "Family and Friends",
   dateTime: "2027-05-22T16:00:00+08:00",
   dateLabel: "Saturday, the twenty-second of May",
   dateShort: "22 May 2027",
@@ -71,6 +71,18 @@ export const wedding = {
     { time: "5:00 PM", event: "Cocktails & photographs" },
     { time: "6:30 PM", event: "Dinner & celebration" },
   ],
+  weddingParty: {
+    principalSponsors: [
+      { ninong: "Ramon Villanueva", ninang: "Teresa Villanueva" },
+      { ninong: "Antonio Santos", ninang: "Marissa Santos" },
+      { ninong: "Gabriel Mendoza", ninang: "Lourdes Mendoza" },
+      { ninong: "Enrique Castillo", ninang: "Sofia Castillo" },
+    ],
+    bestMan: "Adrian Cruz",
+    groomsmen: ["Marco Reyes", "Paolo Garcia", "Luis Navarro", "Nathan Flores"],
+    maidOfHonor: "Isabella Ramos",
+    bridesmaids: ["Camille Santos", "Bianca Torres", "Sofia Dela Cruz", "Elena Bautista"],
+  },
   palette: [
     { name: "Sage", color: "#9EAA91" },
     { name: "Olive", color: "#6C765E" },
@@ -108,7 +120,7 @@ export const wedding = {
     {
       question: "May I bring a plus-one?",
       answer:
-        "We have reserved a specific number of seats for each invitation. Your invitation will include the guest count reserved for you.",
+        "Please contact us before bringing an additional guest so we can confirm availability.",
     },
     {
       question: "Is there parking at the venue?",

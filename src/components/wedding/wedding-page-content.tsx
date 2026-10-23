@@ -11,13 +11,14 @@ import {
 import { Countdown } from "@/components/wedding/countdown";
 import { Gallery } from "@/components/wedding/gallery";
 import { ReplayInvitationButton } from "@/components/wedding/replay-invitation-button";
+import { RsvpForm } from "@/components/wedding/rsvp-form";
 import { wedding } from "@/lib/wedding-data";
 
 
 export function WeddingPageContent() {
   return (
     <main className="page-shell">
-      <div className="announcement">A little bit of forever · {wedding.dateShort} · Catumbalon Covered Court</div>
+      <div className="announcement">A little bit of forever · {wedding.dateShort} · Garden of Eden</div>
 
       <header className="site-header">
         <a className="brand" href="#home" aria-label={`${wedding.couple.groom} and ${wedding.couple.bride}, home`}>
@@ -30,6 +31,7 @@ export function WeddingPageContent() {
         <nav className="site-nav" aria-label="Main navigation">
           <a href="#story">Our story</a>
           <a href="#details">The day</a>
+          <a href="#wedding-party">Wedding party</a>
           <a href="#gallery">Gallery</a>
           <a className="nav-rsvp" href="#rsvp">
             RSVP <ArrowUpRight size={13} aria-hidden="true" />
@@ -269,6 +271,115 @@ export function WeddingPageContent() {
         </div>
       </section>
 
+      <section
+        className="section wedding-party-section"
+        id="wedding-party"
+        aria-labelledby="wedding-party-title"
+      >
+        <div className="section-inner">
+          <div className="section-heading">
+            <span className="section-kicker">Surrounded by love</span>
+            <h2 id="wedding-party-title">Our wedding party.</h2>
+            <p>
+              We are grateful for the loved ones standing by our side. These sample names
+              are here for preview.
+            </p>
+          </div>
+
+          <div className="wedding-party-grid">
+            <section className="party-card sponsor-card" aria-labelledby="sponsors-title">
+              <div className="party-card-heading">
+                <div>
+                  <span className="party-card-kicker">With gratitude</span>
+                  <h3 id="sponsors-title">Principal Sponsors</h3>
+                  <p className="party-card-subtitle">Our ninong and ninang</p>
+                </div>
+                <span className="party-card-count">
+                  {wedding.weddingParty.principalSponsors.length} couples
+                </span>
+              </div>
+              <ul className="sponsor-list">
+                {wedding.weddingParty.principalSponsors.map((sponsor, index) => (
+                  <li key={`${sponsor.ninong}-${sponsor.ninang}-${index}`}>
+                    <div>
+                      <span>Ninong</span>
+                      <strong>{sponsor.ninong}</strong>
+                    </div>
+                    <span className="sponsor-ampersand" aria-hidden="true">
+                      &amp;
+                    </span>
+                    <div>
+                      <span>Ninang</span>
+                      <strong>{sponsor.ninang}</strong>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section className="party-card honor-card" aria-labelledby="best-man-title">
+              <span className="party-card-kicker">By the groom’s side</span>
+              <span className="honor-monogram" aria-hidden="true">
+                {wedding.weddingParty.bestMan
+                  .split(" ")
+                  .map((part) => part[0])
+                  .join("")}
+              </span>
+              <span className="honor-role">Best Man</span>
+              <h3 id="best-man-title">{wedding.weddingParty.bestMan}</h3>
+            </section>
+
+            <section className="party-card honor-card" aria-labelledby="maid-of-honor-title">
+              <span className="party-card-kicker">By the bride’s side</span>
+              <span className="honor-monogram" aria-hidden="true">
+                {wedding.weddingParty.maidOfHonor
+                  .split(" ")
+                  .map((part) => part[0])
+                  .join("")}
+              </span>
+              <span className="honor-role">Maid of Honor</span>
+              <h3 id="maid-of-honor-title">{wedding.weddingParty.maidOfHonor}</h3>
+            </section>
+
+            <section className="party-card attendant-card" aria-labelledby="groomsmen-title">
+              <span className="party-card-kicker">Standing with the groom</span>
+              <h3 id="groomsmen-title">Groomsmen</h3>
+              <ul className="party-name-list">
+                {wedding.weddingParty.groomsmen.map((name, index) => (
+                  <li key={`${name}-${index}`}>
+                    <span className="party-name-monogram" aria-hidden="true">
+                      {name
+                        .split(" ")
+                        .map((part) => part[0])
+                        .join("")}
+                    </span>
+                    <span>{name}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section className="party-card attendant-card" aria-labelledby="bridesmaids-title">
+              <span className="party-card-kicker">Standing with the bride</span>
+              <h3 id="bridesmaids-title">Bridesmaids</h3>
+              <ul className="party-name-list">
+                {wedding.weddingParty.bridesmaids.map((name, index) => (
+                  <li key={`${name}-${index}`}>
+                    <span className="party-name-monogram" aria-hidden="true">
+                      {name
+                        .split(" ")
+                        .map((part) => part[0])
+                        .join("")}
+                    </span>
+                    <span>{name}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </div>
+        </div>
+      </section>
+
       <section className="section" id="gallery" aria-labelledby="gallery-title">
         <div className="section-inner">
           <div className="section-heading">
@@ -285,12 +396,9 @@ export function WeddingPageContent() {
           <span className="section-kicker">Save your seat</span>
           <h2 id="rsvp-title">We hope you can be there.</h2>
           <p className="rsvp-notice">
-            Your personal invitation will include your RSVP link and the number of seats
-            reserved for you. Please reply by {wedding.rsvpDeadline}.
+            Please let us know by {wedding.rsvpDeadline}. We would love to hear from you.
           </p>
-          <a className="button-primary" href="mailto:hello@amaraandmateo.example?subject=Wedding%20RSVP">
-            Questions? Write to us <ArrowUpRight size={14} aria-hidden="true" />
-          </a>
+          <RsvpForm />
           <p className="rsvp-deadline">
             <CalendarDays size={13} aria-hidden="true" /> Kindly reply by {wedding.rsvpDeadline}
           </p>

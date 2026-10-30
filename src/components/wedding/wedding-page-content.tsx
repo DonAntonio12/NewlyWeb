@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Countdown } from "@/components/wedding/countdown";
 import { Gallery } from "@/components/wedding/gallery";
+import { GuestPhotoGallery } from "@/components/wedding/guest-photo-gallery";
 import { ReplayInvitationButton } from "@/components/wedding/replay-invitation-button";
 import { RsvpForm } from "@/components/wedding/rsvp-form";
 import { wedding } from "@/lib/wedding-data";
@@ -384,6 +385,7 @@ export function WeddingPageContent() {
             <p>A few favorite memories while we count down to making new ones with you.</p>
           </div>
           <Gallery />
+          <GuestPhotoGallery />
         </div>
       </section>
 

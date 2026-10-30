@@ -122,7 +122,7 @@ export function RsvpForm() {
 
       <label className="rsvp-field">
         <span>
-          Questions <span className="rsvp-optional">(if any)</span>
+          Questions/Message <span className="rsvp-optional">(if any)</span>
         </span>
         <textarea
           maxLength={1000}
@@ -150,7 +150,11 @@ export function RsvpForm() {
         disabled={isSubmitting || formState.status === "saved"}
         type="submit"
       >
-        {isSubmitting ? "Saving your RSVP..." : formState.status === "saved" ? "RSVP saved" : "Send RSVP"}
+        {isSubmitting
+          ? "Saving your RSVP..."
+          : formState.status === "saved"
+            ? "RSVP saved"
+            : "Send RSVP"}
       </button>
     </form>
   );
